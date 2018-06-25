@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem "logstash-devutils", "1.3.6", :git => "https://github.com/elastic/logstash-devutils.git"
+
 logstash_path = ENV["LOGSTASH_PATH"] || "../logstash-6.3.0"
 use_logstash_source = ENV["LOGSTASH_SOURCE"] && ENV["LOGSTASH_SOURCE"].to_s == "1"
 
