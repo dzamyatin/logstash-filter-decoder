@@ -6,7 +6,7 @@ require "logstash/namespace"
 # message field with whatever you specify in the configuration.
 #
 # It is only intended to be used as an example.
-class LogStash::Filters::Example < LogStash::Filters::Base
+class LogStash::Filters::Decoder < LogStash::Filters::Base
 
   # Setting the config_name here is required. This is how you
   # configure this filter from your Logstash config.
@@ -17,7 +17,7 @@ class LogStash::Filters::Example < LogStash::Filters::Base
   #   }
   # }
   #
-  config_name "example"
+  config_name "decoder"
 
   # Replace the message with this value.
   config :message, :validate => :string, :default => "Hello World!"
