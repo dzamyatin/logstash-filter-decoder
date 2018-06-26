@@ -2,17 +2,17 @@
 require "logstash/filters/base"
 require "logstash/namespace"
 
-# This example filter will replace the contents of the default
+# This filter will replace the contents of the default
 # message field with whatever you specify in the configuration.
 #
-# It is only intended to be used as an example.
+# It is only intended to be used as an.
 class LogStash::Filters::Decoder < LogStash::Filters::Base
 
   # Setting the config_name here is required. This is how you
   # configure this filter from your Logstash config.
   #
   # filter {
-  #   example {
+  #   decoder {
   #     message => "My message..."
   #   }
   # }
@@ -45,4 +45,4 @@ class LogStash::Filters::Decoder < LogStash::Filters::Base
     # filter_matched should go in the last line of our successful code
     filter_matched(event)
   end # def filter
-end # class LogStash::Filters::Example
+end # class LogStash::Filters::Decoder
