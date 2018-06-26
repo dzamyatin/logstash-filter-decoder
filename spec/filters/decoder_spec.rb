@@ -3,7 +3,7 @@ require 'spec_helper'
 require "logstash/filters/decoder"
 
 describe LogStash::Filters::Decoder do
-  describe "Set to Hello World" do
+  describe "Decoded text should be Hello word" do
     let(:config) do <<-CONFIG
       filter {
         decoder {
@@ -13,8 +13,8 @@ describe LogStash::Filters::Decoder do
     CONFIG
     end
 
-    sample("message" => "some text") do
-      expect(subject.get("message")).to eq('Hello World')
+    sample("message" => "H4sIAAAAAAAAA/NIzcnJVyjPL0oBACpAl2kKAAAA") do
+      expect(subject.get("message")).to eq('Hello word')
     end
   end
 end

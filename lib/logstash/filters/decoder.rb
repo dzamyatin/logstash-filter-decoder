@@ -1,6 +1,9 @@
 # encoding: utf-8
 require "logstash/filters/base"
 require "logstash/namespace"
+require "base64"
+require 'zlib'
+require 'stringio'
 
 # This filter will replace the contents of the default
 # message field with whatever you specify in the configuration.
@@ -30,17 +33,17 @@ class LogStash::Filters::Decoder < LogStash::Filters::Base
 
   public
   def filter(event)
+    begin
+        zip = Base64.decode64(event.get("message"));
+        gz = Zlib::GzipReader.new(StringIO.new(zip))
+        uncompressed_string = gz.read
+        event.set("message", uncompressed_string)
+    rescue
 
-    if @message
-      # Replace the event message with our message as configured in the
-      # config file.
-
-      # using the event.set API
-      event.set("message", @message)
-      # correct debugging log statement for reference
-      # using the event.get API
-      @logger.debug? && @logger.debug("Message is now: #{event.get("message")}")
     end
+
+    puts ">>>"
+    puts event.get("message")
 
     # filter_matched should go in the last line of our successful code
     filter_matched(event)
