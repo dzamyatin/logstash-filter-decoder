@@ -42,9 +42,6 @@ class LogStash::Filters::Decoder < LogStash::Filters::Base
 
     end
 
-    puts ">>>"
-    puts event.get("message")
-
     # filter_matched should go in the last line of our successful code
     filter_matched(event)
   end # def filter
