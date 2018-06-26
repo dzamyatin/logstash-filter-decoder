@@ -4,7 +4,7 @@ gemspec
 
 gem "logstash-devutils", "1.3.6", :git => "https://github.com/elastic/logstash-devutils.git"
 
-logstash_path = ENV["LOGSTASH_PATH"] || "../logstash-6.3.0"
+logstash_path = ENV["LOGSTASH_PATH"] || "../../logstash"
 use_logstash_source = ENV["LOGSTASH_SOURCE"] && ENV["LOGSTASH_SOURCE"].to_s == "1"
 
 if Dir.exist?(logstash_path) && use_logstash_source
